@@ -25,6 +25,11 @@ router.post('/depositeMoney',passport.checkAuthentication,customerController.dep
 
 // withdrawal money page
 router.get('/withdrawalpage',passport.checkAuthentication,customerController.withdrawalMoneyPage)
-
+// withdrawal money 
 router.post('/withdrawalMoney',passport.checkAuthentication,customerController.withdrawalMoney);
+//apply loan page
+router.get('/applyloanpage',passport.checkAuthentication,customerController.applyLoanPage);
+
+router.post('/loan',passport.checkAuthentication,customerController.ApplyLoan);
+
 module.exports=router;

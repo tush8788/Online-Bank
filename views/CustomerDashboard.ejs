@@ -16,9 +16,34 @@
     <div class="row">
         <div class="col-6">
             <% if(locals.user && locals.user.isSaving==true){%>
-            <a href="">Apply for loan</a>
+            <a href="/customer/applyloanpage">Apply for loan</a>
             <%}else{%>
                 <p>Apply Loan Facility only for saving account users</p>
+            <%}%>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Amount to apply loan</th>
+                    <th scope="col">Loan Paid</th>
+                    <th scope="col">Rate of Intest</th>
+                    <th scope="col">Approve Amount</th>
+                    <th scope="col">is Reject</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <%for(let l of loan){%>
+                  <tr>
+                    <td><%=l.LoanAmount%></td>
+                    <td><%=l.isPaid%></td>
+                    <td><%=l.RateOfIntrest%></td>
+                    <td><%=l.sanctionAmount%></td>
+                    <td><%=l.isReject%></td>
+                  </tr>
+                
             <%}%>
         </div>
     </div>

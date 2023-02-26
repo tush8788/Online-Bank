@@ -1,4 +1,5 @@
 const CustomerDB=require('../models/customer');
+const LoanDB=require('../models/loan');
 
 //sigin in page
 module.exports.SignInPage=function(req,res){
@@ -48,11 +49,11 @@ module.exports.createSavingAccount=async function(req,res){
         //     }
         //      );
         req.body.isSaving=true;
-        console.log(req.body);
+        // console.log(req.body);
 
             if(!customer){
                 let customer=await CustomerDB.create(req.body);
-                console.log(customer);
+                // console.log(customer);
                 return res.redirect('/customer/signin');
             }
             else{
@@ -87,7 +88,7 @@ module.exports.createTestAccount= async function(req,res){
 
             if(!customer){
                 let customer=await CustomerDB.create(req.body);
-                console.log(customer);
+                // console.log(customer);
                 return res.redirect('/customer/signin');
             }
             else{
@@ -108,11 +109,18 @@ module.exports.createSession=function(req,res){
 }
 
 //dashboard
-module.exports.Dashboard=function(req,res){
+module.exports.Dashboard=async function(req,res){
     // console.log("Dashboard");
-    return res.render('CustomerDashboard',{
-        title:"Dashboard"
-    })
+    try{
+        let loans=await LoanDB.find({user:req.user.id});
+        return res.render('CustomerDashboard',{
+            title:"Dashboard",
+            loan:loans
+        })
+    }
+    catch(err){
+
+    }
 }
 
 //deposite money page
@@ -142,17 +150,24 @@ module.exports.depositeMoney=async function(req,res){
     }
 }
 
+// withdrawal money page
 module.exports.withdrawalMoneyPage=function(req,res){
     return res.render('withdrawalMoney',{
         title:"Withdrawal Ammount"
     })
 }
 
+// withdrawal money
 module.exports.withdrawalMoney=async function(req,res){
     try{
         let user = await CustomerDB.findById(req.body.userId);
         //check req user or login user is same or not
-        if(req.user.id==user._id){    
+        if(req.user.id==user._id){
+            if(user.balance==0 || user.balance<=req.body.withdrawalAmt){
+                console.log("insufficient amount to withdral");
+                return res.redirect('back');
+            }    
+            
            user.balance=parseInt(user.balance)-parseInt(req.body.withdrawalAmt);
            user.save();
            return res.redirect('back');
@@ -164,5 +179,42 @@ module.exports.withdrawalMoney=async function(req,res){
     catch(err){
         console.log(err);
         return res.redirect('back');
+    }
+}
+
+//apply loan page
+module.exports.applyLoanPage=function(req,res){
+    return res.render('applyLoanPage',{
+        title:"Apply Loan"
+    })
+}
+
+// apply loan
+module.exports.ApplyLoan= async function(req,res){
+    try{
+        //check login user and req user is same or not 
+        if(req.user.id!=req.body.userId){
+            console.log("user Not Match");
+            return res.redirect('/');
+        }
+        let newLoan;
+        let LoanApplyList= await LoanDB.findOne({user:req.body.userId});
+        console.log(req.body);
+        if(!LoanApplyList || LoanApplyList.isReject==true){
+            newLoan=await LoanDB.create({
+                user:req.body.userId,
+                LoanAmount:req.body.loanAmt   
+            })
+            // console.log(newLoan);
+            return res.redirect('/customer/dashboard');
+        }
+        else{
+            console.log("You have Already Apply loan");
+            return res.redirect('/customer/dashboard');
+        }
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('/');
     }
 }
