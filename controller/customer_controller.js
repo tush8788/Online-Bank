@@ -2,6 +2,9 @@ const CustomerDB=require('../models/customer');
 
 //sigin in page
 module.exports.SignInPage=function(req,res){
+    if(req.user){
+        return res.redirect('/customer/dashboard')
+    }
     return res.render('customerSignin',{
         title:"Customer Signin"
     })
@@ -9,6 +12,9 @@ module.exports.SignInPage=function(req,res){
 
 //new saving account page
 module.exports.NewSavingAccount=function(req,res){
+    if(req.user){
+        return res.redirect('/customer/dashboard')
+    }
     return res.render('CustomerSavingAccount',{
         title:"New Account"
     })
@@ -16,6 +22,9 @@ module.exports.NewSavingAccount=function(req,res){
 
 //new test account page
 module.exports.TestAccount=function(req,res){
+    if(req.user){
+        return res.redirect('/customer/dashboard')
+    }
     return res.render('CustomerTestAccount',{
         title:"New Account"
     })
@@ -96,4 +105,20 @@ module.exports.createTestAccount= async function(req,res){
 //create session
 module.exports.createSession=function(req,res){
     return res.redirect('/customer/dashboard');
+}
+
+//dashboard
+module.exports.Dashboard=function(req,res){
+    // console.log("Dashboard");
+    return res.render('CustomerDashboard',{
+        title:"Dashboard"
+    })
+}
+
+//signOut
+module.exports.signOut=(req,res)=>{
+    req.logout((err)=>{
+        return res.redirect('/');
+    });
+    
 }

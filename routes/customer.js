@@ -15,4 +15,6 @@ router.post('/testaccount',customerController.createTestAccount);
 
 router.post('/createsession',passport.authenticate('local',{failureRedirect:'/'}),customerController.createSession);
 
+router.get('/dashboard',passport.checkAuthentication,customerController.Dashboard)
+
 module.exports=router;
