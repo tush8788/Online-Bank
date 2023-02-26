@@ -48,6 +48,7 @@ module.exports.createSavingAccount=async function(req,res){
             }
             else{
                 console.log("Customer already exist");
+                return res.redirect('back');
             }
     }
     catch(err){
@@ -57,7 +58,37 @@ module.exports.createSavingAccount=async function(req,res){
 }
 
 //create test account
-module.exports.createTestAccount=function(req,res){
-    console.log(req.body);
-    
+module.exports.createTestAccount= async function(req,res){
+    // console.log(req.body);
+    try{
+        if(req.body.password != req.body.confirmpassword){
+            console.log("Password and confirm passwprd not Match");
+            return res.redirect('back');
+        }
+        // find customer already exist in db
+        let customer=await CustomerDB.findOne({email:req.body.email});
+        // let customer=await CustomerDB.aggregate({ 
+        //     "$match":{
+        //         email:req.body.email
+        //        }
+        //     }
+        //      );
+        req.body.isSaving=false;
+        // console.log(req.body);
+
+            if(!customer){
+                let customer=await CustomerDB.create(req.body);
+                console.log(customer);
+                return res.redirect('/customer/signin');
+            }
+            else{
+                console.log("Customer already exist");
+                return res.redirect('back');
+            }
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+
 }
