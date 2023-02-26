@@ -16,3 +16,13 @@ module.exports.TestAccount=function(req,res){
     })
 }
 
+//create saving account
+module.exports.createSavingAccount=function(req,res){
+    console.log(req.body);
+}
+
+//create test account
+module.exports.createTestAccount=function(req,res){
+    console.log(req.body);
+    
+}
