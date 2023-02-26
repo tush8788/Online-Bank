@@ -43,7 +43,7 @@ passport.deserializeUser(async(id,done)=>{
     try{
         let user=await CustomerDB.findById(id);
         if(!user){
-            // user=await EmployeeDB.findById(id);
+            user=await EmployeeDB.findById(id);
         }
 
         return done(null,user);

@@ -3,10 +3,14 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Bank</a>
       <div class="d-flex justify-content-evenly">
-        <%if(locals.user){%>
-          <a class="btn btn-danger" href="/customer/dashboard">Dashboard</a>
+        <%if(locals.user && locals.user.isEmployee==true){%>
+          <a class="btn btn-danger" href="/employee/dashboard">Dashboard</a>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <a class="btn btn-danger ml-4" href="/signout">SIGN OUT</a>
+          <%}else if(locals.user){%>
+            <a class="btn btn-danger" href="/customer/dashboard">Dashboard</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-danger ml-4" href="/signout">SIGN OUT</a>
           <%}else{%>
             <a class="btn btn-danger" href="/employee/page">Bank Employee</a>
             &nbsp;&nbsp;&nbsp;&nbsp;

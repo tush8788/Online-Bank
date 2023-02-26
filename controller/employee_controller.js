@@ -2,6 +2,9 @@ const EmployeeDB=require('../models/employee');
 
 //signup page
 module.exports.signUpPage=function(req,res){
+    if(req.user){
+        return res.redirect('/employee/dashboard')
+    }
     return res.render('./employee/signup',{
         title:"SignUp"
     });
@@ -30,6 +33,9 @@ module.exports.signUp=async function(req,res){
 
 //signin page
 module.exports.signInPage=function(req,res){
+    if(req.user){
+        return res.redirect('/employee/dashboard')
+    }
     return res.render('./employee/signin',{
         title:"SignIn"
     });
@@ -37,5 +43,13 @@ module.exports.signInPage=function(req,res){
 
 //signin 
 module.exports.signIn=function(req,res){
+    console.log("inside")
     return res.redirect('/employee/dashboard');
+}
+
+module.exports.dashboard=function(req,res){
+    // console.log("come")
+    return res.render('./employee/dashboard',{
+        title:"Dashboard"
+    });
 }
