@@ -1,6 +1,7 @@
 const passport=require('passport');
 const localStretegy=require('passport-local').Strategy;
 const CustomerDB=require('../models/customer');
+const EmployeeDB=require('../models/employee');
 
 passport.use(new localStretegy({
     usernameField:"email",
@@ -10,8 +11,8 @@ passport.use(new localStretegy({
     try{
         //for employee
         let user;
-        if(req.body.isEmployee==true){
-
+        if(req.body.isEmployee=='true'){
+            user=await EmployeeDB.findOne({email:email});
         }
         else{
             user=await CustomerDB.findOne({email:email});

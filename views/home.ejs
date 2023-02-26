@@ -5,8 +5,10 @@
                 <div>
                     <h2>Bank Employee</h2>
                     <% if(!locals.user){%>
-                    <a href="/employee/sigin" class="btn btn-dark">Sigin</a>
-                    <a href="/employee/sigup" class="btn btn-dark">Create Employee</a>
+                        <div class="d-grid gap-2">
+                            <a href="/employee/signinpage" class="btn btn-dark">Sigin</a>
+                            <a href="/employee/signuppage" class="btn btn-dark">Create Employee</a>
+                        </div>
                     <%}%>
                 </div>
             </div>
