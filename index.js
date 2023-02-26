@@ -1,5 +1,6 @@
 const express=require('express');
 const port=process.env.PORT||8000
+const expressLayout=require('express-ejs-layouts');
 
 const app=express();
 
@@ -10,6 +11,9 @@ app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
 app.use(express.urlencoded({extended:false}));
+app.use(expressLayout);
+
+app.use('/',require('./routes/index'));
 
 app.listen(port,function(err){
     if(err){
