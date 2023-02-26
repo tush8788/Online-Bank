@@ -115,10 +115,54 @@ module.exports.Dashboard=function(req,res){
     })
 }
 
-//signOut
-module.exports.signOut=(req,res)=>{
-    req.logout((err)=>{
-        return res.redirect('/');
+//deposite money page
+module.exports.depositeMoneyPage=function(req,res){
+    return res.render('depositeMoney',{
+        title:"Deposite"
     });
-    
+}
+
+// deposite money
+module.exports.depositeMoney=async function(req,res){
+    try{
+        let user = await CustomerDB.findById(req.body.userId);
+        //check req user or login user is same or not
+        if(req.user.id==user._id){    
+           user.balance=parseInt(user.balance)+parseInt(req.body.depositeAmt);
+           user.save();
+           return res.redirect('back');
+        }
+        else{
+            return res.redirect('/');
+        }
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+}
+
+module.exports.withdrawalMoneyPage=function(req,res){
+    return res.render('withdrawalMoney',{
+        title:"Withdrawal Ammount"
+    })
+}
+
+module.exports.withdrawalMoney=async function(req,res){
+    try{
+        let user = await CustomerDB.findById(req.body.userId);
+        //check req user or login user is same or not
+        if(req.user.id==user._id){    
+           user.balance=parseInt(user.balance)-parseInt(req.body.withdrawalAmt);
+           user.save();
+           return res.redirect('back');
+        }
+        else{
+            return res.redirect('/');
+        }
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
 }

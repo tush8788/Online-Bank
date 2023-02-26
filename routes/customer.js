@@ -15,6 +15,16 @@ router.post('/testaccount',customerController.createTestAccount);
 
 router.post('/createsession',passport.authenticate('local',{failureRedirect:'/'}),customerController.createSession);
 
-router.get('/dashboard',passport.checkAuthentication,customerController.Dashboard)
+router.get('/dashboard',passport.checkAuthentication,customerController.Dashboard);
 
+// money deposit page
+router.get('/depositepage',passport.checkAuthentication,customerController.depositeMoneyPage)
+
+//deposit money
+router.post('/depositeMoney',passport.checkAuthentication,customerController.depositeMoney)
+
+// withdrawal money page
+router.get('/withdrawalpage',passport.checkAuthentication,customerController.withdrawalMoneyPage)
+
+router.post('/withdrawalMoney',passport.checkAuthentication,customerController.withdrawalMoney);
 module.exports=router;
