@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <h3>Convert to Saving Account</h3>
+    <%if(locals.user && locals.user.isSaving==false){%>
+    <div class="row">
+        <div class="col-6">
+            <form class="row g-3" method="post" action="/customer/convertinsaving">
+                <div class="col-md-6">
+                    <label class="form-label">Adhar Card No</label>
+                    <input type="number" name="adharNo" class="form-control" placeholder="Adhar Card No.." required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Pan No</label>
+                    <input type="text" style="text-transform:uppercase" class="form-control" name="panNo" placeholder="Pan No.." required>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" placeholder="Enter Full Address.." required>
+                </div>
+                <div class="col-md-6">
+                    <input type="hidden" name="userId" value="<%=locals.user._id%>" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%}else{%>
+        <h4>Allready Saving Account</h4>
+    <%}%>
+</div>

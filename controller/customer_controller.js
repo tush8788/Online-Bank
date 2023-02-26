@@ -218,3 +218,29 @@ module.exports.ApplyLoan= async function(req,res){
         return res.redirect('/');
     }
 }
+
+//convert test to saving account page
+module.exports.convertToSavingPage=async function(req,res){
+    return res.render('convertToSaving',{
+        title:"Convert To Saving"
+    })
+}
+
+module.exports.convertToSaving=async function(req,res){
+    try{
+        console.log(req.body);
+        req.body.isSaving=true;
+        let user = await CustomerDB.findByIdAndUpdate(req.body.userId,req.body);
+        // if(!user){
+        //     console.log("User not found");
+        //     return res.redirect('back')
+        // }
+        // console.log(user);
+        return res.redirect('/customer/dashboard');
+
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('/customer/dashboard');
+    }
+}

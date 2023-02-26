@@ -29,7 +29,10 @@ router.get('/withdrawalpage',passport.checkAuthentication,customerController.wit
 router.post('/withdrawalMoney',passport.checkAuthentication,customerController.withdrawalMoney);
 //apply loan page
 router.get('/applyloanpage',passport.checkAuthentication,customerController.applyLoanPage);
-
+//loan
 router.post('/loan',passport.checkAuthentication,customerController.ApplyLoan);
-
+//convert into Saving page
+router.get('/convertintoSavingpage',passport.checkAuthentication,customerController.convertToSavingPage);
+// test convert to saving
+router.post('/convertinsaving',passport.checkAuthentication,customerController.convertToSaving)
 module.exports=router;
