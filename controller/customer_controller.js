@@ -6,7 +6,7 @@ module.exports.SignInPage=function(req,res){
     if(req.user){
         return res.redirect('/customer/dashboard')
     }
-    return res.render('customerSignin',{
+    return res.render('./Customer/customerSignin',{
         title:"Customer Signin"
     })
 }
@@ -16,7 +16,7 @@ module.exports.NewSavingAccount=function(req,res){
     if(req.user){
         return res.redirect('/customer/dashboard')
     }
-    return res.render('CustomerSavingAccount',{
+    return res.render('./Customer/CustomerSavingAccount',{
         title:"New Account"
     })
 }
@@ -26,7 +26,7 @@ module.exports.TestAccount=function(req,res){
     if(req.user){
         return res.redirect('/customer/dashboard')
     }
-    return res.render('CustomerTestAccount',{
+    return res.render('./Customer/CustomerTestAccount',{
         title:"New Account"
     })
 }
@@ -113,7 +113,7 @@ module.exports.Dashboard=async function(req,res){
     // console.log("Dashboard");
     try{
         let loans=await LoanDB.find({user:req.user.id});
-        return res.render('CustomerDashboard',{
+        return res.render('./Customer/CustomerDashboard',{
             title:"Dashboard",
             loan:loans
         })
@@ -125,7 +125,7 @@ module.exports.Dashboard=async function(req,res){
 
 //deposite money page
 module.exports.depositeMoneyPage=function(req,res){
-    return res.render('depositeMoney',{
+    return res.render('./Customer/depositeMoney',{
         title:"Deposite"
     });
 }
@@ -152,7 +152,7 @@ module.exports.depositeMoney=async function(req,res){
 
 // withdrawal money page
 module.exports.withdrawalMoneyPage=function(req,res){
-    return res.render('withdrawalMoney',{
+    return res.render('./Customer/withdrawalMoney',{
         title:"Withdrawal Ammount"
     })
 }
@@ -184,7 +184,7 @@ module.exports.withdrawalMoney=async function(req,res){
 
 //apply loan page
 module.exports.applyLoanPage=function(req,res){
-    return res.render('applyLoanPage',{
+    return res.render('./Customer/applyLoanPage',{
         title:"Apply Loan"
     })
 }
@@ -221,7 +221,7 @@ module.exports.ApplyLoan= async function(req,res){
 
 //convert test to saving account page
 module.exports.convertToSavingPage=async function(req,res){
-    return res.render('convertToSaving',{
+    return res.render('./Customer/convertToSaving',{
         title:"Convert To Saving"
     })
 }
