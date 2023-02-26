@@ -92,3 +92,8 @@ module.exports.createTestAccount= async function(req,res){
     }
 
 }
+
+//create session
+module.exports.createSession=function(req,res){
+    return res.redirect('/customer/dashboard');
+}
