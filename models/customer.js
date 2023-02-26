@@ -18,7 +18,7 @@ const customerSchema=new mongoose.Schema({
         unique:true
     },
     panNo:{
-        type:Number,
+        type:String,
         unique:true
     },
     address:{
