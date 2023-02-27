@@ -199,7 +199,6 @@ module.exports.ApplyLoan= async function(req,res){
         }
         let newLoan;
         let LoanApplyList= await LoanDB.findOne({user:req.body.userId});
-        console.log(req.body);
         if(!LoanApplyList || LoanApplyList.isReject==true){
             newLoan=await LoanDB.create({
                 user:req.body.userId,
@@ -231,15 +230,70 @@ module.exports.convertToSaving=async function(req,res){
         console.log(req.body);
         req.body.isSaving=true;
         let user = await CustomerDB.findByIdAndUpdate(req.body.userId,req.body);
-        // if(!user){
-        //     console.log("User not found");
-        //     return res.redirect('back')
-        // }
-        // console.log(user);
         return res.redirect('/customer/dashboard');
 
     }
     catch(err){
+        console.log(err);
+        return res.redirect('/customer/dashboard');
+    }
+}
+
+module.exports.PaidLoanPage=async function(req,res){
+    try{
+        let Loan=await LoanDB.findById(req.params.loanId);
+        let date=new Date(Loan.createdAt);
+        let month=date.getMonth()+1;
+        let Todaydate=new Date().getMonth()+1;
+
+        let tMonth=Todaydate-month;
+        if(tMonth==0){
+            tMonth=1;
+        }
+        
+
+        let AmmountNeedToPaid=(Loan.LoanAmount * Loan.RateOfIntrest * tMonth)/100
+
+        return res.render('./customer/paidLoan',{
+            title:"Loan Paid",
+            Ammount:AmmountNeedToPaid,
+            Loan:Loan
+
+        })
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('/customer/dashboard');
+    }
+}
+
+// loan paid
+module.exports.PaidLoan=async function(req,res){
+    try{
+        let customer=await CustomerDB.findById(req.body.userId);
+        if(req.user.id!=customer._id){
+            console.log("user Not Match");
+            return res.redirect('back');
+        }
+        
+        //loan amount is greter then balance
+        if(customer.balance<=req.body.loanAmt){
+            console.log("insufficent Balance to pay loan");
+            return res.redirect('/customer/dashboard');
+        }
+
+        //delete loan entry
+       let Loan =await LoanDB.findById(req.body.loanId);
+        //debit loan from balance
+        customer.loanAmount=customer.loanAmount-Loan.LoanAmount;
+        customer.balance-=req.body.loanAmt;
+        customer.save();
+        Loan.remove();
+
+        return res.redirect('/customer/dashboard');
+    }
+    catch(err)
+    {
         console.log(err);
         return res.redirect('/customer/dashboard');
     }

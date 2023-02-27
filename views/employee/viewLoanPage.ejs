@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form class="row g-3" method="post" action="/employee/updateloanstatus">
+                <div class="col-md-12">
+                    <label class="form-label">Name Of Customer</label>
+                    <input type="text" name="name" value="<%=Loan.user.name%>" readonly class="form-control" placeholder="Enter Amount.." required>
+                </div>
+                <div class="col-md-12">
+                    <input type="hidden" name="userId" value="<%=Loan.user._id%>" readonly class="form-control" placeholder="Enter Amount.." required>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Need Amount</label>
+                    <input type="number" min="1000" name="loanAmt" value="<%=Loan.LoanAmount%>" readonly class="form-control" placeholder="Enter Amount.." required>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">isApprove</label>
+                    <input type="text" name="isApprove" value="<%=Loan.isApprove%>"  class="form-control" placeholder="Enter true or false" required>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Intrest</label>
+                    <input type="number" min="3" max="20" name="RateOfIntrest" value="<%=Loan.RateOfIntrest%>" class="form-control" placeholder="RateOfIntrest" required>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">isReject</label>
+                    <input type="text" name="isReject" value="<%=Loan.isReject%>" class="form-control" placeholder="Enter true or false" required>
+                </div>
+                
+                <div class="col-md-6">
+                    <!-- <label class="form-label">Password</label> -->
+                    <input type="hidden" name="loanId" value="<%=Loan._id%>" class="form-control" readonly required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

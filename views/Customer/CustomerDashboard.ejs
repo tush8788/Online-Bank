@@ -4,6 +4,9 @@
         <div class="col">
             <h4>Balace : <%=locals.user.balance%></h4>
         </div>
+        <div class="col">
+            <h4>Loan : <%=locals.user.loanAmount%></h4>
+        </div>
     </div>
     <div class="row">
         <div class="col-6">
@@ -28,11 +31,12 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Amount to apply loan</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Loan Paid</th>
-                    <th scope="col">Rate of Intest</th>
-                    <th scope="col">Approve Amount</th>
-                    <th scope="col">is Reject</th>
+                    <th scope="col">Intest</th>
+                    <th scope="col">Approve</th>
+                    <th scope="col">Reject</th>
+                    <th scope="col">Paid</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,11 +45,17 @@
                     <td><%=l.LoanAmount%></td>
                     <td><%=l.isPaid%></td>
                     <td><%=l.RateOfIntrest%></td>
-                    <td><%=l.sanctionAmount%></td>
+                    <td><%=l.isApprove%></td>
                     <td><%=l.isReject%></td>
+                    <%if(l.isApprove==true){%>
+                    <td><a href="/customer/paidloan/<%=l._id%>%>">Paid</a></td>
+                    <%}%>
+
                   </tr>
                 
             <%}%>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

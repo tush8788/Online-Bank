@@ -9,14 +9,15 @@ const loanSchma=new mongoose.Schema({
         type:Number,
         required:true
     },
-    sanctionAmount:{
-        type:Number
-    },
     RateOfIntrest:{
         type:Number,
         default:8
     },
     isPaid:{
+        type:Boolean,
+        default:false
+    },
+    isApprove:{
         type:Boolean,
         default:false
     },

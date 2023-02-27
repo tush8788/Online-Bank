@@ -35,4 +35,8 @@ router.post('/loan',passport.checkAuthentication,customerController.ApplyLoan);
 router.get('/convertintoSavingpage',passport.checkAuthentication,customerController.convertToSavingPage);
 // test convert to saving
 router.post('/convertinsaving',passport.checkAuthentication,customerController.convertToSaving)
+//loan paid page
+router.get('/paidloan/:loanId',passport.checkAuthentication,customerController.PaidLoanPage);
+//loan paid 
+router.post('/paidLoan',passport.checkAuthentication,customerController.PaidLoan)
 module.exports=router;

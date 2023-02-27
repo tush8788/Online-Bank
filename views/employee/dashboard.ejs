@@ -1,7 +1,162 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            dashboard
+            <h4>Saving Account Customer</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Adhar No</th>
+                        <th scope="col">Pan No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let l of CustomerList){%>
+                        <%if(l.isSaving==true){%>
+                            <tr>
+                                <td>
+                                    <%=l.name%>
+                                </td>
+                                <td>
+                                    <%=l.email%>
+                                </td>
+                                <td>
+                                    <%=l.phone%>
+                                </td>
+                                <td>
+                                    <%=l.adharNo%>
+                                </td>
+                                <td>
+                                    <%=l.panNo%>
+                                </td>
+                            </tr>
+                        <%}%>
+
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Test Account Customer</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let l of CustomerList){%>
+                        <%if(l.isSaving==false){%>
+                            <tr>
+                                <td>
+                                    <%=l.name%>
+                                </td>
+                                <td>
+                                    <%=l.email%>
+                                </td>
+                                <td>
+                                    <%=l.phone%>
+                                </td>
+                            </tr>
+                        <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h4>Loan Requests</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Intrest</th>
+                        <th scope="col">isApprove</th>
+                        <th scope="col">isReject</th>
+                        <th scope="col">view</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let l of LoanList){%>
+                        <%if(l.isApprove==false && l.isReject==false){%>
+                            <tr>
+                                <td>
+                                    <%=l.user.name%>
+                                </td>
+                                <td>
+                                    <%=l.user.email%>
+                                </td>
+                                <td>
+                                    <%=l.LoanAmount%>
+                                </td>
+                                <td>
+                                    <%=l.RateOfIntrest%>
+                                </td>
+                                <td>
+                                    <%=l.isApprove%>
+                                </td>
+                                <td>
+                                    <%=l.isReject%>
+                                </td>
+                                <td>
+                                    <a href="/employee/loan-view/<%=l._id%>">view</a>
+                                </td>
+                            </tr>
+                        <%}%>
+
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h4>Loan Approve</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Intrest</th>
+                        <th scope="col">isApprove</th>
+                        <th scope="col">isReject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let l of LoanList){%>
+                        <%if(l.isApprove==true && l.isReject==false){%>
+                            <tr>
+                                <td>
+                                    <%=l.user.name%>
+                                </td>
+                                <td>
+                                    <%=l.user.email%>
+                                </td>
+                                <td>
+                                    <%=l.LoanAmount%>
+                                </td>
+                                <td>
+                                    <%=l.RateOfIntrest%>
+                                </td>
+                                <td>
+                                    <%=l.isApprove%>
+                                </td>
+                                <td>
+                                    <%=l.isReject%>
+                                </td>
+                            </tr>
+                        <%}%>
+
+                    <%}%>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

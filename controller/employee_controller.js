@@ -1,4 +1,6 @@
 const EmployeeDB=require('../models/employee');
+const CustomerDB=require('../models/customer');
+const LoanDB=require('../models/loan');
 
 //signup page
 module.exports.signUpPage=function(req,res){
@@ -43,13 +45,65 @@ module.exports.signInPage=function(req,res){
 
 //signin 
 module.exports.signIn=function(req,res){
-    console.log("inside")
     return res.redirect('/employee/dashboard');
 }
 
-module.exports.dashboard=function(req,res){
-    // console.log("come")
-    return res.render('./employee/dashboard',{
-        title:"Dashboard"
-    });
+//dashboard
+module.exports.dashboard=async function(req,res){
+    try{
+        // customer list
+        let CustomerList=await CustomerDB.find({}); 
+        // loan list
+        let LoanList=await LoanDB.find({}).populate('user');
+
+        return res.render('./employee/dashboard',{
+            title:"Dashboard",
+            CustomerList:CustomerList,
+            LoanList:LoanList
+        });
+    }
+    catch(err){
+        
+    }
 }
+
+//view loan page
+module.exports.viewLoanPage= async function(req,res){
+    try{
+        let Loan=await LoanDB.findById(req.params.id).populate('user');
+        return res.render('./employee/viewLoanPage',{
+            title:"Loan Update",
+            Loan:Loan
+        });
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+}
+
+//loan update
+module.exports.loanUpdate=async function(req,res){
+    // console.log(req.body);
+    try{
+        //update loan
+        let Loan = await LoanDB.findByIdAndUpdate(req.body.loanId,{
+            isApprove:req.body.isApprove,
+            RateOfIntrest:req.body.RateOfIntrest,
+            isReject:req.body.isReject
+        });
+
+        
+        //update user balance
+        let customer=await CustomerDB.findById(req.body.userId);
+        customer.balance=parseInt(customer.balance)+parseInt(Loan.LoanAmount);
+        customer.loanAmount=parseInt(customer.loanAmount)+parseInt(Loan.LoanAmount);
+        customer.save();
+        return res.redirect('/employee/dashboard');
+    }
+    catch(err){
+        console.log(err);
+        return res.redirect('back');
+    }
+}
+
