@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const dotenv=require('dotenv').config();
 mongoose.set('strictQuery',false);
 
-mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/ippopay-assignment');
+mongoose.connect(process.env.MONGO_URL);
 
 const db=mongoose.connection;
 
