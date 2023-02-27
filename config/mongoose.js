@@ -1,8 +1,8 @@
 const mongoose=require('mongoose');
-
+const dotenv=require('dotenv').config();
 mongoose.set('strictQuery',false);
 
-mongoose.connect('mongodb://localhost/ippopay-assignment');
+mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/ippopay-assignment');
 
 const db=mongoose.connection;
 

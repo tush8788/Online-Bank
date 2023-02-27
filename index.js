@@ -10,6 +10,8 @@ const mongoStrore=require('connect-mongo');
 // notifiaction
 const connectFlash=require('connect-flash');
 const Flash=require('./config/Notification');
+// env
+const dotenv=require('dotenv').config();
 
 const port=process.env.PORT||8000
 
