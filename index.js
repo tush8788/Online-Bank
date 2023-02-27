@@ -35,7 +35,7 @@ app.use(expressSession({
         maxAge:1000*60*100*100
     },
     store: mongoStrore.create({
-        mongoUrl:"mongodb://localhost/ippopay-assignment",
+        mongoUrl:process.env.MONGO_URL||"mongodb://localhost/ippopay-assignment",
         autoRemove:false
     },function(err){
         console.log(err||console.log("Connect"));
