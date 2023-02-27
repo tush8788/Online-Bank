@@ -16,19 +16,21 @@ module.exports.signUpPage=function(req,res){
 module.exports.signUp=async function(req,res){
     try{
         if(req.body.password != req.body.ConfirmPassword){
-            console.log("password and confirm password not match");
+            req.flash('error',"password and confirm password not match");
             return res.redirect('back');
         }
         let user = await EmployeeDB.findOne({email:req.body.email});
         if(!user){
             user=await EmployeeDB.create(req.body);
+            req.flash('success',"New Employee is Created");
             return res.redirect('/employee/signinpage');
         }
-
+        req.flash('error',"Employee already exist");
         return res.redirect('/employee/signinpage');
     }
     catch(err){
         console.log(err);
+        req.flash('error',"Internal server error");
         return res.redirect('back');
     }
 }
@@ -45,6 +47,7 @@ module.exports.signInPage=function(req,res){
 
 //signin 
 module.exports.signIn=function(req,res){
+    req.flash('success',"Login Successfully");
     return res.redirect('/employee/dashboard');
 }
 
@@ -63,7 +66,9 @@ module.exports.dashboard=async function(req,res){
         });
     }
     catch(err){
-        
+        console.log(err);
+        req.flash('error',"Internal server error");
+        return res.redirect('back');
     }
 }
 
@@ -78,6 +83,7 @@ module.exports.viewLoanPage= async function(req,res){
     }
     catch(err){
         console.log(err);
+        req.flash('error',"Internal server error");
         return res.redirect('back');
     }
 }
@@ -99,10 +105,12 @@ module.exports.loanUpdate=async function(req,res){
         customer.balance=parseInt(customer.balance)+parseInt(Loan.LoanAmount);
         customer.loanAmount=parseInt(customer.loanAmount)+parseInt(Loan.LoanAmount);
         customer.save();
+        req.flash('success',"Loan update Successfully");
         return res.redirect('/employee/dashboard');
     }
     catch(err){
         console.log(err);
+        req.flash('error',"Internal server error");
         return res.redirect('back');
     }
 }

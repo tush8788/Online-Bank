@@ -10,6 +10,7 @@ module.exports.signOut=(req,res)=>{
         if(err){
             console.log(err);
         }
+        req.flash('success',"Signout Successfully");
         return res.redirect('/');
     });
     
