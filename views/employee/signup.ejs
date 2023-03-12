@@ -1,25 +1,32 @@
-<div class="container">
-    <div class="row">
-         <div class="col-6">
-             <form class="row g-3" method="post" action="/employee/signup">
-                 <div class="col-md-12">
-                     <label class="form-label">Email</label>
-                     <input type="email" name="email" class="form-control" placeholder="Enter Email.." required>
-                 </div>
-                 <div class="col-md-12">
-                     <label class="form-label">Password</label>
-                     <input type="password" name="password" placeholder="Enter Password.." class="form-control" required>
-                 </div>
-     
-                 <div class="col-md-12">
+<link rel="stylesheet" href="/css/signup.css">
+<div class="main-div">
+    <div class="second-container" style="height: 70%;">
+        <div class="form-container" >
+            <h3 class="heading">Create Employee Account</h3>
+            <form class="row g-3" method="post" action="/employee/signup">
+                <div class="col-md-12">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email.." required>
+                </div>
+                <div class="col-md-12">
                     <label class="form-label">Password</label>
-                    <input type="password" name="ConfirmPassword" placeholder="Enter Password.." class="form-control" required>
-                 </div>
+                    <input type="password" name="password" placeholder="Enter Password.." class="form-control" required>
+                </div>
+    
+                <div class="col-md-12">
+                   <label class="form-label">Password</label>
+                   <input type="password" name="ConfirmPassword" placeholder="Enter Password.." class="form-control" required>
+                </div>
 
-                 <div class="col-12">
-                     <button type="submit" class="btn btn-primary">SignUp</button>
-                 </div>
-             </form>
-         </div>
+                <div class="col-12" style="text-align: center;">
+                    <button type="submit"  class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+        <div class="links">
+            <div class="col-md-5">
+                <a href="/employee/signinpage">Sign in</a>
+            </div>
+        </div>
     </div>
- </div>
+</div>

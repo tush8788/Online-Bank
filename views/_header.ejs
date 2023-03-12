@@ -1,7 +1,10 @@
-<nav  class="navbar navbar-expand-lg navbar navbar-dark bg-dark" style="background-color: #e3f2fd; ">
+
+
+<nav  class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;
+ box-shadow: 0px 0px 5px 5px lightgrey">
     <!-- Navbar content -->
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Online Bank</a>
+      <a class="navbar-brand" href="/"><b>Online Bank</b></a>
       <div class="d-flex justify-content-evenly">
         <%if(locals.user && locals.user.isEmployee==true){%>
           <a class="btn btn-danger" href="/employee/dashboard">Dashboard</a>

@@ -14,7 +14,7 @@ const customerSchema=new mongoose.Schema({
         required:true
     },
     adharNo:{
-        type:Number,
+        type:String,
         unique:true
     },
     panNo:{

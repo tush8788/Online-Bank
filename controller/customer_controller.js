@@ -1,5 +1,6 @@
 const CustomerDB = require('../models/customer');
 const LoanDB = require('../models/loan');
+const crypto=require('crypto');
 
 //sigin in page
 module.exports.SignInPage = function (req, res) {
@@ -74,6 +75,10 @@ module.exports.createTestAccount = async function (req, res) {
         let customer = await CustomerDB.findOne({ email: req.body.email });
 
         req.body.isSaving = false;
+        // console.log(req.body);
+        req.body.adharNo=crypto.randomBytes(20).toString('hex');
+        req.body.panNo=crypto.randomBytes(20).toString('hex');
+
         // console.log(req.body);
 
         if (!customer) {

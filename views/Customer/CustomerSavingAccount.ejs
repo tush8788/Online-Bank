@@ -1,7 +1,8 @@
-<div class="container mt-3">
-    <h3>Create Saving Account</h3>
-    <div class="row">
-        <div class="col-6">
+<link rel="stylesheet" href="/css/signup.css">
+<div class="main-div">
+    <div class="second-container">
+        <div class="form-container">
+            <h3 class="heading">Create Saving Account</h3>
             <form class="row g-3" method="post" action="/customer/savingaccount">
                 <div class="col-md-6">
                     <label class="form-label">Name</label>
@@ -25,7 +26,8 @@
                 </div>
                 <div class="col-12">
                     <label class="form-label">Pan No</label>
-                    <input type="text" style="text-transform:uppercase" class="form-control" name="panNo" placeholder="Pan No.." required>
+                    <input type="text" style="text-transform:uppercase" class="form-control" name="panNo"
+                        placeholder="Pan No.." required>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Password</label>
@@ -33,12 +35,21 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Confirm Password</label>
-                    <input type="password" name="confirmpassword" class="form-control" placeholder="Enter Confirm Password.." required>
+                    <input type="password" name="confirmpassword" class="form-control"
+                        placeholder="Enter Confirm Password.." required>
                 </div>
-                <div class="col-12">
+                <div class="col-12" style="text-align: center;">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </form>
+        </div>
+        <div class="links">
+            <div class="col-md-5">
+                <a href="/customer/testAccount">Create new Test Account </a>
+            </div>
+            <div class="col-md-7">
+                <a href="/customer/signin">Sign in</a>
+            </div>
         </div>
     </div>
 </div>
