@@ -1,22 +1,33 @@
-<div class="container">
-   <div class="row">
-        <div class="col-6">
-            <form class="row g-3" method="post" action="/customer/createsession">
-                <div class="col-md-6">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter Email.." required>
+<link rel="stylesheet" href="/css/signin.css">
+<div class="main-div">
+        <div class="form-container">
+            <div class="form">
+                <center><h2 class="heading">Customer SignIn</h2></center>
+                <form class="row g-3" method="post" action="/customer/createsession">
+                    <div class="col-md-12">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter Email.." required>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" placeholder="Enter Password.." class="form-control"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="hidden" name="isEmployee" value="false" required>
+                    </div>
+                    <div class="col-12" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                </form>
+            </div>
+            <div class="links">
+                <div class="col-md-5">
+                    <a href="/customer/testAccount">Create new Test Account </a>
                 </div>
-                <div class="col-md-6">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" placeholder="Enter Password.." class="form-control" required>
+                <div class="col-md-7">
+                    <a href="/customer/savingAccount">Create new Saving Account </a>
                 </div>
-                <div class="col-md-6">
-                    <input type="hidden" name="isEmployee" value="false" required>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </form>
+            </div>
         </div>
-   </div>
 </div>

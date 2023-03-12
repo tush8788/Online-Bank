@@ -23,6 +23,8 @@ app.set('views','./views');
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
+app.use(express.static('./assets'));
+
 app.use(express.urlencoded({extended:false}));
 app.use(expressLayout);
 //set session cookie
