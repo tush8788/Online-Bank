@@ -1,61 +1,131 @@
-<h2>Dashboard</h2>
+<link rel="stylesheet" href="/css/customer-dashboard.css">
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h4>Balace : <%=locals.user.balance%></h4>
-        </div>
-        <div class="col">
-            <h4>Loan : <%=locals.user.loanAmount%></h4>
+        <div class="col-6">
+            <h5>Hello, <%=locals.user.name%></h5><br>
+            <p>Account Type:- <% if(locals.user && locals.user.isSaving==true){%>Saving Account<%}else{%>Test Account<%}%></p>
         </div>
     </div>
+    <br>
+    <br>
     <div class="row">
         <div class="col-6">
+            <img src="https://cdn-icons-png.flaticon.com/128/1041/1041888.png" alt="">
+            <h4>Balance : <%=locals.user.balance%>
+            </h4>
+        </div>
+
+        <div class="col-6">
+            <img src="https://cdn-icons-png.flaticon.com/128/2660/2660516.png" alt="">
+            <h4>Loan : <%=locals.user.loanAmount%>
+            </h4>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <img src="https://cdn-icons-png.flaticon.com/128/4825/4825116.png" alt=""><br>
+            <img src="https://cdn-icons-png.flaticon.com/28/1632/1632686.png" alt=""><br>
             <a href="/customer/depositepage">Deposite money</a>
         </div>
         <div class="col-6">
+            <img src="https://cdn-icons-png.flaticon.com/128/5024/5024335.png" alt="">
             <a href="/customer/withdrawalpage">withdrawal money</a>
         </div>
     </div>
+    <br>
+    <br>
     <div class="row">
         <div class="col-6">
             <% if(locals.user && locals.user.isSaving==true){%>
-            <a href="/customer/applyloanpage">Apply for loan</a>
+                <a href="/customer/applyloanpage">Apply for loan</a>
             <%}else{%>
                 <p>Apply Loan Facility only for saving account users</p>
                 <a href="/customer/convertintoSavingpage">Convert TestAcount into Saving account</a>
             <%}%>
         </div>
-    </div>
-    <div class="row">
         <div class="col-6">
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Loan Paid</th>
-                    <th scope="col">Intest</th>
-                    <th scope="col">Approve</th>
-                    <th scope="col">Reject</th>
-                    <th scope="col">Paid</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Loan Paid</th>
+                        <th scope="col">Intest</th>
+                        <th scope="col">Approve</th>
+                        <th scope="col">Reject</th>
+                        <th scope="col">Paid</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <%for(let l of loan){%>
-                  <tr>
-                    <td><%=l.LoanAmount%></td>
-                    <td><%=l.isPaid%></td>
-                    <td><%=l.RateOfIntrest%></td>
-                    <td><%=l.isApprove%></td>
-                    <td><%=l.isReject%></td>
-                    <%if(l.isApprove==true){%>
-                    <td><a href="/customer/paidloan/<%=l._id%>%>">Paid</a></td>
-                    <%}%>
+                    <%for(let l of loan){%>
+                        <tr>
+                            <td>
+                                <%=l.LoanAmount%>
+                            </td>
+                            <td>
+                                <%=l.isPaid%>
+                            </td>
+                            <td>
+                                <%=l.RateOfIntrest%>
+                            </td>
+                            <td>
+                                <%=l.isApprove%>
+                            </td>
+                            <td>
+                                <%=l.isReject%>
+                            </td>
+                            <%if(l.isApprove==true){%>
+                                <td><a href="/customer/paidloan/<%=l._id%>%>">Paid</a></td>
+                                <%}%>
 
-                  </tr>
-                
-            <%}%>
+                        </tr>
+
+                        <%}%>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Loan Paid</th>
+                        <th scope="col">Intest</th>
+                        <th scope="col">Approve</th>
+                        <th scope="col">Reject</th>
+                        <th scope="col">Paid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let l of loan){%>
+                        <tr>
+                            <td>
+                                <%=l.LoanAmount%>
+                            </td>
+                            <td>
+                                <%=l.isPaid%>
+                            </td>
+                            <td>
+                                <%=l.RateOfIntrest%>
+                            </td>
+                            <td>
+                                <%=l.isApprove%>
+                            </td>
+                            <td>
+                                <%=l.isReject%>
+                            </td>
+                            <%if(l.isApprove==true){%>
+                                <td><a href="/customer/paidloan/<%=l._id%>%>">Paid</a></td>
+                                <%}%>
+
+                        </tr>
+
+                        <%}%>
+                </tbody>
+            </table> -->
         </div>
     </div>
 </div>
