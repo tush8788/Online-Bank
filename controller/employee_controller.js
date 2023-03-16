@@ -99,12 +99,13 @@ module.exports.loanUpdate=async function(req,res){
             isReject:req.body.isReject
         });
 
-        
-        //update user balance
-        let customer=await CustomerDB.findById(req.body.userId);
-        customer.balance=parseInt(customer.balance)+parseInt(Loan.LoanAmount);
-        customer.loanAmount=parseInt(customer.loanAmount)+parseInt(Loan.LoanAmount);
-        customer.save();
+        if(!req.body.isReject){
+            //update user balance
+            let customer=await CustomerDB.findById(req.body.userId);
+            customer.balance=parseInt(customer.balance)+parseInt(Loan.LoanAmount);
+            customer.loanAmount=parseInt(customer.loanAmount)+parseInt(Loan.LoanAmount);
+            customer.save();
+        }
         req.flash('success',"Loan update Successfully");
         return res.redirect('/employee/dashboard');
     }
