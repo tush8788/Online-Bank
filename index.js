@@ -46,10 +46,11 @@ app.use(expressSession({
 // passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticationUser);
 //notifiaction 
 app.use(connectFlash());
 app.use(Flash.setFlash);
-app.use(passport.setAuthenticationUser);
 
 app.use('/',require('./routes/index'));
 //listen

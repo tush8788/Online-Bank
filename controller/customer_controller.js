@@ -166,7 +166,7 @@ module.exports.withdrawalMoney = async function (req, res) {
         let user = await CustomerDB.findById(req.body.userId);
         //check req user or login user is same or not
         if (req.user.id == user._id) {
-            if (user.balance == 0 || user.balance <= req.body.withdrawalAmt) {
+            if (user.balance == 0 || user.balance < req.body.withdrawalAmt) {
                 req.flash('error',"insufficient amount to withdral");
                 return res.redirect('back');
             }
