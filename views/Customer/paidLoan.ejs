@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="/css/apply-loan.css">
 <div class="container">
     <div class="row">
         <div class="col-6">
+            <center><h3>Loan Paid</h3></center>
             <form class="row g-3" method="post" action="/customer/paidLoan">
                 <div class="col-md-12">
                     <label class="form-label">Intrest Amount</label>
@@ -23,9 +25,10 @@
                     <input type="hidden" name="loanId" value="<%=Loan._id%>" class="form-control" readonly required>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Paid</button>
+                    <center><button type="submit" class="btn btn-primary">Paid</button></center>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<br><br>

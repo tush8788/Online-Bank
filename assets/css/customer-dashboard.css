@@ -18,7 +18,6 @@ body{
 .col-6{
     font-weight: 600;
     background-color: #E8D5B5;
-    color: #1E004F;
     width: 40%;
     box-shadow: 0px 0px 16px 8px gray;
     display: flex;
@@ -26,6 +25,11 @@ body{
     align-items: center;
     padding: 10px;
     border-radius: 10px 0px 10px 0px;
-    /* background-color: yellow; */
+    transition: all 0.2s;
 }
 
+.col-6:hover{
+    /* background-color: #4BFCE2; */
+    background-color: #F6A8FF;
+    color: white;
+}

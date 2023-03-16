@@ -1,17 +1,20 @@
+<link rel="stylesheet" href="/css/apply-loan.css">
 <div class="container">
     <div class="row">
         <div class="col-6">
+            <center><h3>Apply Loan</h3></center>
             <form class="row g-3" method="post" action="/customer/loan">
                 <div class="col-md-12">
-                    <label class="form-label">Need Amount</label>
-                    <input type="number" min="1000" name="loanAmt" class="form-control" placeholder="Enter Amount.." required>
+                    <label class="form-label">Needed Amount</label>
+                    <input type="number" min="1000" name="loanAmt" class="form-control" placeholder="Enter Amount.."
+                        required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- <label class="form-label">Password</label> -->
                     <input type="hidden" name="userId" value="<%=locals.user._id%>" class="form-control" required>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">apply</button>
+                    <center><button type="submit" class="btn btn-primary">apply</button></center>
                 </div>
             </form>
         </div>
