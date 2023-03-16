@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="/css/home.css">
 <div>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <div>
-                    <h2>Bank Employee</h2>
+                    <h2 class="heading">Bank Employee</h2>
+                    <center><img src="https://cdn-icons-png.flaticon.com/256/2830/2830284.png" alt=""></center>
                     <% if(!locals.user){%>
                         <div class="d-grid gap-2">
                             <a href="/employee/signinpage" class="btn btn-dark">Sigin</a>
@@ -14,7 +16,8 @@
             </div>
             <div class="col-6">
                 <div >
-                    <h2>Customer</h2> 
+                    <h2 class="heading">Customer</h2> 
+                    <center><img src="https://cdn-icons-png.flaticon.com/256/3201/3201521.png" alt=""></center>
                     <% if(!locals.user){%>                   
                         <div class="d-grid gap-2">
                             <a href="/customer/signin" class="btn btn-dark">Sigin</a>
