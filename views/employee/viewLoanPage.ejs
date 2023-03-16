@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="/css/apply-loan.css">
 <div class="container">
     <div class="row">
         <div class="col-6">
+            <center><h3>Loan Approve Form</h3></center>
             <form class="row g-3" method="post" action="/employee/updateloanstatus">
                 <div class="col-md-12">
                     <label class="form-label">Name Of Customer</label>
@@ -31,9 +33,10 @@
                     <input type="hidden" name="loanId" value="<%=Loan._id%>" class="form-control" readonly required>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">update</button>
+                    <center><button type="submit" class="btn btn-primary">update</button></center>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<br><br>
