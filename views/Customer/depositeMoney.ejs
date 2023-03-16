@@ -1,13 +1,17 @@
+<link rel="stylesheet" href="/css/deposite_withdrowal_money.css">
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h4>Balace: <%=locals.user.balance%></h4>
+            <img src="https://cdn-icons-png.flaticon.com/128/1041/1041888.png" alt="">
+            <h4>Balace: <%=locals.user.balance%>
+            </h4>
         </div>
         <div class="col-6">
             <form class="row g-3" method="post" action="/customer/depositeMoney">
                 <div class="col-md-12">
                     <label class="form-label">Deposite Amount</label>
-                    <input type="number" min="10" name="depositeAmt" class="form-control" placeholder="Enter Amount.." required>
+                    <input type="number" min="10" name="depositeAmt" class="form-control" placeholder="Enter Amount.."
+                        required>
                 </div>
                 <div class="col-md-6">
                     <!-- <label class="form-label">Password</label> -->
@@ -17,7 +21,7 @@
                     <input type="hidden" name="isEmployee" value="false" required>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Deposite</button>
+                    <center><button type="submit" class="btn btn-primary">Deposite</button></center>
                 </div>
             </form>
         </div>
