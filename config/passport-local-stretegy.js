@@ -18,7 +18,7 @@ passport.use(new localStretegy({
         }
 
         if(!user || user.password != password){
-            req.flash("error","username or password not match")
+            req.flash("error","username or password not match");
             return done(null,false);
         }
 

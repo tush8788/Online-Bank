@@ -1,3 +1,9 @@
+body{
+    background-image: linear-gradient(to right bottom, #d16ba5, #ea7783, #ea9168, #d7af61, #b8ca77, #8dd08c, #5bd2ac, #00d1ce, #00bde5, #00a5fe, #0086ff, #055af8);
+
+    /* background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #9ea6e6, #a4b1ea, #acbced, #c5cbf1, #dadcf5, #eeedfa, #ffffff); */
+}
+
 .container{
     margin-top: 10px;
     width: 100%;
@@ -10,8 +16,11 @@
 }
 
 .col-6{
+    font-weight: 600;
+    background-color: #E8D5B5;
+    color: #1E004F;
     width: 40%;
-    box-shadow: 0px 0px 8px 8px gray;
+    box-shadow: 0px 0px 16px 8px gray;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
