@@ -19,26 +19,26 @@ This is a Online Bank Application (ippo-pay-assignment)
   
 ##Tools
 
-Node Js v-16.18.0
-Express Js
-Mongodb atlas
-Mongoose
-Ejs
-Bootstrap 5
-passport local (for authentication purpose)
-express-session (for create,incript and store cookie)
-connect-mongo (for storing cookie inside db)
-connect-flash and noty (for display notification)
+1. Node Js v-16.18.0
+2. Express Js
+3. Mongodb atlas
+4. Mongoose
+5. Ejs
+6. Bootstrap 5
+7. passport local (for authentication purpose)
+8. express-session (for create,incript and store cookie)
+9. connect-mongo (for storing cookie inside db)
+10. connect-flash and noty (for display notification)
 
 ##Setup in Local System
 
-git clone 
-open command prompt and Type 'npm install' for download all dependencies
-then just "npm start"/ if npm start is not work just run this command 'node index.js'
-then go localhost:8000
+1. git clone "https://github.com/tush8788/Online-Bank.git"
+2. open command prompt and Type 'npm install' for download all dependencies
+3. then just "npm start"/ if npm start is not work just run this command 'node index.js'
+4. then go localhost:8000
 
 #This Site is hosted on render
-Access link "https://online-bank.onrender.com"
+1. Access link "https://online-bank.onrender.com"
 
 ##Screen Short
 
