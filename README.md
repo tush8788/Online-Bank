@@ -2,20 +2,20 @@
 This is a Online Bank Application (ippo-pay-assignment) 
 
 ##Functionality
-1) User Bank Employee
-  I)Signin and Signup 
-  II)Check test user and Saving Account users
-  III)Approve Loan
+# User Bank Employee
+1. Signin and Signup 
+2. Check test user and Saving Account users
+3. Approve Loan
     
-2) Test Account User
-  I)Signin and Signup 
-  II)Withdrowall and deposite amount 
-  III)Convert Test Account into Saving
+# Test Account User
+1. Signin and Signup 
+2. Withdrowall and deposite amount 
+3. Convert Test Account into Saving
 
-3) Saving Account User
-  I)Signin and Signup
-  II)Withdrowall and deposite amount
-  III)Apply Loan
+# Saving Account User
+1. Signin and Signup
+2. Withdrowall and deposite amount
+3. Apply Loan
   
 ##Tools
 
