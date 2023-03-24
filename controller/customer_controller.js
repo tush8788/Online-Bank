@@ -263,7 +263,7 @@ module.exports.PaidLoanPage = async function (req, res) {
 
         let AmmountNeedToPaid = (Loan.LoanAmount * Loan.RateOfIntrest * tMonth) / 100
 
-        return res.render('./customer/paidLoan', {
+        return res.render('./Customer/paidLoan', {
             title: "Loan Paid",
             Ammount: AmmountNeedToPaid,
             Loan: Loan
