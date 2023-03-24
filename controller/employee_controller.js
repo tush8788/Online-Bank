@@ -99,8 +99,12 @@ module.exports.loanUpdate=async function(req,res){
             isReject:req.body.isReject
         });
 
-        if(!req.body.isReject){
+        // console.log("is reject",req.body.isReject)
+        // console.log("is approve" , req.body.isApprove);
+
+        if(req.body.isReject=="false" && req.body.isApprove=="true"){
             //update user balance
+            // console.log("inside ")
             let customer=await CustomerDB.findById(req.body.userId);
             customer.balance=parseInt(customer.balance)+parseInt(Loan.LoanAmount);
             customer.loanAmount=parseInt(customer.loanAmount)+parseInt(Loan.LoanAmount);
