@@ -1,5 +1,5 @@
-# Online bank
-This is a Online Bank Application (ippo-pay-assignment) 
+# Online bank (ippo-pay-assignment) 
+Using this web application user can create test account as wel as saving account and saving account user can apply loan  
 
 ##Functionality
 # User Bank Employee
