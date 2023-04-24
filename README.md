@@ -37,7 +37,7 @@ Using this web application user can create test account as wel as saving account
 3. then just "npm start"/ if npm start is not work just run this command 'node index.js'
 4. then go localhost:8000
 
-#This Site is hosted on render
+## This Site is hosted on render (this site is hosted on free tier thats why its take some time to the load)
 1. Access link "https://online-bank.onrender.com"
 
 ##Screen Short
